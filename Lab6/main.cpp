@@ -1,20 +1,21 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-bool simp(int x){
-    for(int i=2;i<(sqrt(x)+1);i++){
-        if (x % i == 0) {
-            return true;
-        }
-    }
-    if (x <= 0) {
-        return true;
-    }
-}
-//
-//int main(){
+// bool simp(int x)
+// {
+//     for(int i=2;i<(sqrt(x)+1);i++){
+//         if (x % i == 0) {
+//             return true;
+//         }
+//     }
+//     if (x <= 0) {
+//         return true;
+//     }
+// }
+// //в„–1
+// int main(){
 //    setlocale(LC_ALL, "Russian");
-//    cout<<"Введите длинну массива:\n";
+//    cout<<"Р’РІРµРґРёС‚Рµ РґР»РёРЅРЅСѓ РјР°СЃСЃРёРІР°:\n";
 //    int l;
 //    bool fl=0;
 //    cin>>l;
@@ -23,131 +24,235 @@ bool simp(int x){
 //        cin>>ar[i];
 //        if (simp(ar[i]) == 0) {
 //            fl = 1;
+//            break;
 //        }
 //    }
 //    if (fl==0) {
 //        sort(ar, ar + l);
-//        cout << "Отсортированные элементы массива:" << endl;
+//        cout << "РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РјР°СЃСЃРёРІР°:" << endl;
 //        for (int i = 0; i < l; i++) {
 //            cout << ar[i] << " ";
 //        }
 //    }
-//    else cout << "В массиве есть простой элемент";
+//    else cout << "Р’ РјР°СЃСЃРёРІРµ РµСЃС‚СЊ РїСЂРѕСЃС‚РѕР№ СЌР»РµРјРµРЅС‚";
 //    return 0;
-//    
-//}
+   
+// }
+
+// //в„–2
+// int sumD(int a){
+// 	int sum=0;
+//     while(a)
+//     {
+//         sum+=a%10;
+//         a/=10;
+//     }
+// 	return sum;
+// }
+
+// int mulD(int a)
+// {
+//     int mul=1;
+//     while(a)
+//     {
+//         mul*=a%10;
+//         a/=10;
+//     }
+//     return mul;
+// }
+
+ 
+// bool sor(int n1,int n2)
+// {
+//     if (sumD(n1)>sumD(n2))
+//     return true;
+//     if (sumD(n1)<sumD(n2))
+//     return false;
+
+//     if (mulD(n1)>mulD(n2))
+//     return true;
+//     if (mulD(n1)<mulD(n2))
+//     return false;
+    
+//     if (n1>n2)
+//     return true;
+//     return false;
+// }
+// int main()
+// {
+//     setlocale(LC_ALL, "RU");
+//     int a,b,n;
+// 	cout<<"Р’РІРµРґРёС‚Рµ РґР»РёРЅРЅСѓ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё:\n";
+//     cin>>n;
+//     int *arr=new int[n];
+//     for(int i=0;i<n;i++)
+//     {
+// 		cout<<"Р’РІРµРґРёС‚Рµ"<<i+1<< " СЌР»РµРјРµРЅС‚";
+//         cin>>arr[i];
+//     }
+//     for(int i=0;i<n-1;i++)
+//     {
+//         for(int j=i+1;j<n;j++)
+//         {
+//             if (sor(arr[i],arr[j]))
+//             swap(arr[i],arr[j]);
+//         }
+//     }
+// 	cout<< "РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ РјР°СЃСЃРёРІ:\n";
+//     for(int i=0;i<n;i++)
+//     {
+//         cout<<arr[i]<<" ";
+//     }
+// }
+
+//в„–3
+// int main() {
+//     setlocale(LC_ALL, "Russian");
+//     int m, n, pr, prm=INT_MIN, str=0,a;
+//     cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє:";
+//     cin >> m;
+//     cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕР»Р±С†РѕРІ:";
+//     cin >>n;
+//     int** matrix = new int* [m];
+//     for (int i = 0; i < m; i++) {
+//         matrix[i] = new int[n];
+//     }
+//     for (int i = 0; i < m; i++) {
+//         pr = 1;
+//         for (int j=0; j < n; j++) {
+//             cout << "Р’РІРµРґРёС‚Рµ СЌР»РµРјРµРЅС‚ " << i+1 << " СЃС‚СЂРѕРєРё " << j+1 << " СЃС‚РѕР»Р±С†Р°:";
+//             cin >> matrix[i][j];
+//             pr = pr * matrix[i][j];
+//             if (pr > prm) {
+//                 prm = pr;
+//                 str = i;
+//             }
+//         }
+//     }
+//     for (int i = 0; i < n;i++) {
+//         matrix[str][i] = prm;
+//     }
+
+//     cout << "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ:" << prm << endl;
+//     cout << "РњР°С‚СЂРёС†Р°:";
+
+//     for (int i = 0; i < m; i++) {
+//         cout << endl;
+//         for (int j = 0; j < n; j++) {
+//             cout << matrix[i][j]<<" ";
+
+//         }
+//     }
+
+//     return 0;
+// }
 
 
-
-//#include <iostream>
-//#include <vector>
-//#include <algorithm>
-//
-//struct NumberProperties {
-//    int number;
-//    int digitSum;
-//    int digitProduct;
-//
-//    NumberProperties(int num) : number(num), digitSum(0), digitProduct(1) {
-//        int temp = num;
-//        while (temp > 0) {
-//            int digit = temp % 10;
-//            digitSum += digit;
-//            digitProduct *= digit;
-//            temp /= 10;
-//        }
-//    }
-//};
-//
-//// Компаратор для сортировки
-//bool compare(const NumberProperties& a, const NumberProperties& b) {
-//    if (a.digitSum != b.digitSum) {
-//        return a.digitSum < b.digitSum;
-//    }
-//    if (a.digitProduct != b.digitProduct) {
-//        return a.digitProduct < b.digitProduct;
-//    }
-//    return a.number < b.number;
-//}
-//
-//int main() {
-//    setlocale(LC_ALL, "Russian");
-//    int n;
-//
-//    std::cout << "Введите количество натуральных чисел (n <= 1000): ";
-//    std::cin >> n;
-//
-//    if (n <= 0 || n > 1000) {
-//        std::cout << "Ошибка: n должно быть в пределах от 1 до 1000." << std::endl;
-//        return 1;
-//    }
-//
-//    std::vector<NumberProperties> numbers;
-//
-//    // Ввод чисел
-//    std::cout << "Введите " << n << " натуральных чисел:" << std::endl;
-//    for (int i = 0; i < n; ++i) {
-//        int num;
-//        std::cin >> num;
-//
-//        // Проверка на натуральность
-//        if (num <= 0) {
-//            std::cout << "Ошибка: число должно быть натуральным." << std::endl;
-//            return 1;
-//        }
-//
-//        numbers.emplace_back(num); // Создаем объект и добавляем в вектор
-//    }
-//
-//    // Сортировка чисел
-//    std::sort(numbers.begin(), numbers.end(), compare);
-//
-//    // Вывод отсортированных чисел
-//    std::cout << "Отсортированные числа:" << std::endl;
-//    for (const auto& numProp : numbers) {
-//        std::cout << numProp.number << std::endl;
-//    }
-//
-//    return 0; // Успешное завершение программы
-//}
-int main() {
-    setlocale(LC_ALL, "Russian");
-
-    int m, n, pr, prm=0, str=0,a;
-    cout << "Количество строк:";
-    cin >> m;
-    cout << "Количество столбцов:";
-    cin >>n;
-    int** matrix = new int* [m];
-    for (int i = 0; i < m; i++) {
-        matrix[i] = new int[n];
+//в„–4
+int main(){
+    int n;
+    cout<<"Р”Р»РёРЅРЅР° РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё:\n";
+    cin>>n;
+    int *arr=new int[n];
+    for(int i=0;i<n;i++)
+    {
+        cout<<i+1<<" СЌР»РµРјРµРЅС‚: ";
+        cin>>arr[i];
     }
-    for (int i = 0; i < m; i++) {
-        pr = 1;
-        for (int j=0; j < n; j++) {
-            cout << "Введите элемент " << i+1 << " строки " << j+1 << " столбца:";
-            cin >> matrix[i][j];
-            pr = pr * matrix[i][j];
-            if (pr > prm) {
-                prm = pr;
-                str = i;
-            }
-        }
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" "<<arr[i]<<" ";
     }
-    for (int i = 0; i < n;i++) {
-        matrix[str][i] = prm;
-    }
-
-    cout << "Максимальное произведение:" << prm << endl;
-    cout << "Матрица:";
-
-    for (int i = 0; i < m; i++) {
-        cout << endl;
-        for (int j = 0; j < n; j++) {
-            cout << matrix[i][j]<<" ";
-
-        }
-    }
-
-    return 0;
+    delete [] arr;
 }
+
+
+
+//в„–4(2)
+// #include <iostream>
+
+// int main() {
+//     const int maxSize = 100; // РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°
+//     int arr[maxSize]; // РѕСЃРЅРѕРІРЅРѕР№ РјР°СЃСЃРёРІ
+//     int n; // РєРѕР»РёС‡РµСЃС‚РІРѕ РІРІРµРґРµРЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
+//     int result[maxSize]; // РјР°СЃСЃРёРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р° (РІРјРµСЃС‚Рѕ РІС‚РѕСЂРѕРіРѕ РјР°СЃСЃРёРІР°)
+
+//     // Р’РІРѕРґ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё
+//     std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ (РјР°РєСЃРёРјСѓРј 100): ";
+//     std::cin >> n;
+
+//     std::cout << "Р’РІРµРґРёС‚Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ С‡РёСЃРµР»:\n";
+//     for (int i = 0; i < n; ++i) {
+//         std::cin >> arr[i];
+//     }
+
+//     int resultSize = 0; // СЃС‡С‘С‚С‡РёРє РґР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°
+
+//     // РЈРґР°Р»РµРЅРёРµ Рё РґСѓР±Р»РёСЂРѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ
+//     for (int i = 0; i < n; ++i) {
+//         // РџСЂРѕРІРµСЂРєР° РЅР° СѓРЅРёРєР°Р»СЊРЅРѕСЃС‚СЊ
+//         bool isUnique = true;
+//         for (int j = 0; j < resultSize; ++j) {
+//             if (arr[i] == result[j]) {
+//                 isUnique = false;
+//                 break;
+//             }
+//         }
+//         if (isUnique) {
+//             // Р”РѕР±Р°РІР»СЏРµРј СЌР»РµРјРµРЅС‚ РІ СЂРµР·СѓР»СЊС‚Р°С‚
+//             result[resultSize++] = arr[i];      // РґРѕР±Р°РІР»СЏРµРј СѓРЅРёРєР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚
+//             result[resultSize++] = arr[i];      // РґСѓР±Р»РёСЂСѓРµРј РµРіРѕ
+//         }
+//     }
+
+//     // Р’С‹РІРѕРґ РїРѕР»СѓС‡РµРЅРЅРѕР№ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё
+//     std::cout << "Р РµР·СѓР»СЊС‚РёСЂСѓСЋС‰Р°СЏ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ:\n";
+//     for (int i = 0; i < resultSize; ++i) {
+//         std::cout << result[i] << " ";
+//     }
+//     std::cout << std::endl;
+
+//     return 0;
+// }
+
+// //в„–5
+// bool simp(int x)
+// {
+//     for(int i=2;i<(sqrt(x)+1);i++){
+//         if (x % i == 0) {
+//             return true;
+//         }
+//     }
+//     if (x <= 0)
+//     return true;
+//     return false;
+// }
+// #include <cmath>
+// int main()
+// {
+//     int n,i=0,a;
+//     cin>>n;
+//     int *ar=new int[2*n];
+//     for(int k=0;k<n;k++)
+//     {
+//         cin>>a;
+//         if(simp(a))
+//         {
+//             if(cbrt(a)==int(cbrt(a)))
+//             {
+//                 ar[i+1]=a;
+//                 ar[i]=a;
+//                 i+=2;
+//             }
+//             else
+//             {
+//                 ar[i]=a;
+//                 i+=1;
+//             }
+//         }
+
+//     }
+//     for(int j=0;j<i;j++)
+//     cout<<ar[j]<<" ";
+//     delete [] ar;
+// }
