@@ -26,7 +26,6 @@ using namespace std;
 //            fl = 1;
 //            break;
 //        }
-//    delete [] ar;
 //    }
 //    if (fl==0) {
 //        sort(ar, ar + l);
@@ -40,72 +39,71 @@ using namespace std;
    
 // }
 
-//№2
-int sumD(int a){
-	int sum=0;
-    while(a)
-    {
-        sum+=a%10;
-        a/=10;
-    }
-	return sum;
-}
+// //№2
+// int sumD(int a){
+// 	int sum=0;
+//     while(a)
+//     {
+//         sum+=a%10;
+//         a/=10;
+//     }
+// 	return sum;
+// }
 
-int mulD(int a)
-{
-    int mul=1;
-    while(a)
-    {
-        mul*=a%10;
-        a/=10;
-    }
-    return mul;
-}
+// int mulD(int a)
+// {
+//     int mul=1;
+//     while(a)
+//     {
+//         mul*=a%10;
+//         a/=10;
+//     }
+//     return mul;
+// }
 
  
-bool sor(int n1,int n2)
-{
-    if (sumD(n1)>sumD(n2))
-    return true;
-    if (sumD(n1)<sumD(n2))
-    return false;
+// bool sor(int n1,int n2)
+// {
+//     if (sumD(n1)>sumD(n2))
+//     return true;
+//     if (sumD(n1)<sumD(n2))
+//     return false;
 
-    if (mulD(n1)>mulD(n2))
-    return true;
-    if (mulD(n1)<mulD(n2))
-    return false;
+//     if (mulD(n1)>mulD(n2))
+//     return true;
+//     if (mulD(n1)<mulD(n2))
+//     return false;
     
-    if (n1>n2)
-    return true;
-    return false;
-}
-int main()
-{
-    setlocale(LC_ALL, "RU");
-    int a,b,n;
-	cout<<"Введите длинну последовательности:\n";
-    cin>>n;
-    int *arr=new int[n];
-    for(int i=0;i<n;i++)
-    {
-		cout<<"Введите"<<i+1<< " элемент";
-        cin>>arr[i];
-    }
-    for(int i=0;i<n-1;i++)
-    {
-        for(int j=i+1;j<n;j++)
-        {
-            if (sor(arr[i],arr[j]))
-            swap(arr[i],arr[j]);
-        }
-    }
-	cout<< "Отсортированный массив:\n";
-    for(int i=0;i<n;i++)
-    {
-        cout<<arr[i]<<" ";
-    }
-    delete [] arr;
-}
+//     if (n1>n2)
+//     return true;
+//     return false;
+// }
+// int main()
+// {
+//     setlocale(LC_ALL, "RU");
+//     int a,b,n;
+// 	cout<<"Введите длинну последовательности:\n";
+//     cin>>n;
+//     int *arr=new int[n];
+//     for(int i=0;i<n;i++)
+//     {
+// 		cout<<"Введите"<<i+1<< " элемент";
+//         cin>>arr[i];
+//     }
+//     for(int i=0;i<n-1;i++)
+//     {
+//         for(int j=i+1;j<n;j++)
+//         {
+//             if (sor(arr[i],arr[j]))
+//             swap(arr[i],arr[j]);
+//         }
+//     }
+// 	cout<< "Отсортированный массив:\n";
+//     for(int i=0;i<n;i++)
+//     {
+//         cout<<arr[i]<<" ";
+//     }
+// }
 
 //№3
 // int main() {
@@ -146,5 +144,115 @@ int main()
 //         }
 //     }
 
-//     delete [] matrix;
+//     return 0;
+// }
+
+
+//№4
+int main(){
+    int n;
+    cout<<"Длинна последовательности:\n";
+    cin>>n;
+    int *arr=new int[n];
+    for(int i=0;i<n;i++)
+    {
+        cout<<i+1<<" элемент: ";
+        cin>>arr[i];
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" "<<arr[i]<<" ";
+    }
+    delete [] arr;
+}
+
+
+
+//№4(2)
+// #include <iostream>
+
+// int main() {
+//     const int maxSize = 100; // максимальный размер массива
+//     int arr[maxSize]; // основной массив
+//     int n; // количество введенных элементов
+//     int result[maxSize]; // массив для хранения результата (вместо второго массива)
+
+//     // Ввод последовательности
+//     std::cout << "Введите количество элементов (максимум 100): ";
+//     std::cin >> n;
+
+//     std::cout << "Введите последовательность чисел:\n";
+//     for (int i = 0; i < n; ++i) {
+//         std::cin >> arr[i];
+//     }
+
+//     int resultSize = 0; // счётчик для результата
+
+//     // Удаление и дублирование элементов
+//     for (int i = 0; i < n; ++i) {
+//         // Проверка на уникальность
+//         bool isUnique = true;
+//         for (int j = 0; j < resultSize; ++j) {
+//             if (arr[i] == result[j]) {
+//                 isUnique = false;
+//                 break;
+//             }
+//         }
+//         if (isUnique) {
+//             // Добавляем элемент в результат
+//             result[resultSize++] = arr[i];      // добавляем уникальный элемент
+//             result[resultSize++] = arr[i];      // дублируем его
+//         }
+//     }
+
+//     // Вывод полученной последовательности
+//     std::cout << "Результирующая последовательность:\n";
+//     for (int i = 0; i < resultSize; ++i) {
+//         std::cout << result[i] << " ";
+//     }
+//     std::cout << std::endl;
+
+//     return 0;
+// }
+
+// //№5
+// bool simp(int x)
+// {
+//     for(int i=2;i<(sqrt(x)+1);i++){
+//         if (x % i == 0) {
+//             return true;
+//         }
+//     }
+//     if (x <= 0)
+//     return true;
+//     return false;
+// }
+// #include <cmath>
+// int main()
+// {
+//     int n,i=0,a;
+//     cin>>n;
+//     int *ar=new int[2*n];
+//     for(int k=0;k<n;k++)
+//     {
+//         cin>>a;
+//         if(simp(a))
+//         {
+//             if(cbrt(a)==int(cbrt(a)))
+//             {
+//                 ar[i+1]=a;
+//                 ar[i]=a;
+//                 i+=2;
+//             }
+//             else
+//             {
+//                 ar[i]=a;
+//                 i+=1;
+//             }
+//         }
+
+//     }
+//     for(int j=0;j<i;j++)
+//     cout<<ar[j]<<" ";
+//     delete [] ar;
 // }
