@@ -1,14 +1,22 @@
 #include <iostream>
-#include <fstream> 
 #include "string"
-#include "writing.h"
-#include "reading.h"
-using namespace std; 
+#include "functions.h"
+
+using namespace std;
 int main()
 {
-    // переделать: на вход подавать функцию
-    writematrix();
-    readingmatrix();
+    int Max_n = 100;
+    //int **matrix=new int* [Max_n];
+    int matrix[100][100];
+    /*for (int i = 0; i < Max_n; i++)
+    {
+        matrix[i] = new int[Max_n];
+    }*/
+    func::readingmatrix(matrix);
+    for (int i = 0; i < 2; i++)
+    {
+        cout << matrix[i][0];
+    }
 }
 //     ifstream fin;
 //     fin.open("matrix.txt");
@@ -35,7 +43,7 @@ int main()
 //            {
 //                 // Находим следующую позицию пробела
 //                 int spacePos = str.find(' ', pos);
-                
+
 //                 // Если пробел не найден, берем остаток строки
 //                 if (spacePos == string::npos) {
 //                     spacePos = str.length();
@@ -43,7 +51,7 @@ int main()
 
 //                 // Извлекаем подстроку и конвертируем в целое число
 //                 matrix[i][index] = stoi(str.substr(pos, spacePos - pos));
-                
+
 //                 // Обновляем позицию и индекс
 //                 pos = spacePos + 1; // Пропускаем пробел
 //                 index++;
