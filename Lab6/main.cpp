@@ -1,41 +1,48 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
+
+#define TAIL 5
 // bool simp(int x)
 // {
-//     for(int i=2;i<(sqrt(x)+1);i++){
+//     for(int i=2;i<=sqrt(x);i++){
 //         if (x % i == 0) {
 //             return true;
 //         }
 //     }
-//     if (x <= 0) {
-//         return true;
-//     }
+//     return false;
 // }
 // //№1
 // int main(){
-//    setlocale(LC_ALL, "Russian");
+//    setlocale(LC_ALL, "RU");
 //    cout<<"Введите длинну массива:\n";
 //    int l;
 //    bool fl=0;
 //    cin>>l;
 //    int* ar=new int[l];
 //    for(int i=0;i<l;i++){
+//        cout<<"Введите "<<i+1<<" число: ";
 //        cin>>ar[i];
 //        if (simp(ar[i]) == 0) {
 //            fl = 1;
-//            break;
 //        }
 //    }
 //    if (fl==0) {
-//        sort(ar, ar + l);
+//         for(int i=0;i<l-1;i++)
+//         {
+//          for(int j=i+1;j<l;j++)
+//          {
+//              if (ar[i]>ar[j])
+//                 swap(ar[i],ar[j]);
+//         }
+//         }
 //        cout << "Отсортированные элементы массива:" << endl;
 //        for (int i = 0; i < l; i++) {
 //            cout << ar[i] << " ";
 //        }
 //    }
 //    else cout << "В массиве есть простой элемент";
-//    return 0;
+//    delete [] ar;
    
 // }
 
@@ -64,7 +71,12 @@ using namespace std;
  
 // bool sor(int n1,int n2)
 // {
-//     if (sumD(n1)>sumD(n2))
+
+//     if (sumD(n1)!=sumD(n2)) return sumD(n1)>sumD(n2);
+//     if (mulD(n1)!=mulD(n2)) return mulD(n1)>mulD(n2);
+//     return n1>n2;
+
+//     /*if (sumD(n1)>sumD(n2))
 //     return true;
 //     if (sumD(n1)<sumD(n2))
 //     return false;
@@ -76,7 +88,7 @@ using namespace std;
     
 //     if (n1>n2)
 //     return true;
-//     return false;
+//     return false;*/
 // }
 // int main()
 // {
@@ -95,7 +107,7 @@ using namespace std;
 //         for(int j=i+1;j<n;j++)
 //         {
 //             if (sor(arr[i],arr[j]))
-//             swap(arr[i],arr[j]);
+//                 swap(arr[i],arr[j]);
 //         }
 //     }
 // 	cout<< "Отсортированный массив:\n";
@@ -105,10 +117,10 @@ using namespace std;
 //     }
 // }
 
-//№3
+// //№3
 // int main() {
 //     setlocale(LC_ALL, "Russian");
-//     int m, n, pr, prm=INT_MIN, str=0,a;
+//     int m, n, pr, prm=INT_MIN, str=-1,a;
 //     cout << "Количество строк:";
 //     cin >> m;
 //     cout << "Количество столбцов:";
@@ -123,11 +135,11 @@ using namespace std;
 //             cout << "Введите элемент " << i+1 << " строки " << j+1 << " столбца:";
 //             cin >> matrix[i][j];
 //             pr = pr * matrix[i][j];
-//             if (pr > prm) {
+//         }
+//         if (pr > prm) {
 //                 prm = pr;
 //                 str = i;
 //             }
-//         }
 //     }
 //     for (int i = 0; i < n;i++) {
 //         matrix[str][i] = prm;
@@ -149,110 +161,65 @@ using namespace std;
 
 
 //№4
-int main(){
-    int n;
-    cout<<"Длинна последовательности:\n";
-    cin>>n;
-    int *arr=new int[n];
-    for(int i=0;i<n;i++)
-    {
-        cout<<i+1<<" элемент: ";
-        cin>>arr[i];
+
+
+bool simp(int x)
+{
+    for(int i=2;i<(sqrt(x)+1);i++){
+        if (x % i == 0) {
+            return true;
+        }
     }
-    for(int i=0;i<n;i++)
-    {
-        cout<<arr[i]<<" "<<arr[i]<<" ";
-    }
-    delete [] arr;
+    return false;
 }
-
-
-
-//№4(2)
-// #include <iostream>
-
-// int main() {
-//     const int maxSize = 100; // максимальный размер массива
-//     int arr[maxSize]; // основной массив
-//     int n; // количество введенных элементов
-//     int result[maxSize]; // массив для хранения результата (вместо второго массива)
-
-//     // Ввод последовательности
-//     std::cout << "Введите количество элементов (максимум 100): ";
-//     std::cin >> n;
-
-//     std::cout << "Введите последовательность чисел:\n";
-//     for (int i = 0; i < n; ++i) {
-//         std::cin >> arr[i];
-//     }
-
-//     int resultSize = 0; // счётчик для результата
-
-//     // Удаление и дублирование элементов
-//     for (int i = 0; i < n; ++i) {
-//         // Проверка на уникальность
-//         bool isUnique = true;
-//         for (int j = 0; j < resultSize; ++j) {
-//             if (arr[i] == result[j]) {
-//                 isUnique = false;
-//                 break;
-//             }
-//         }
-//         if (isUnique) {
-//             // Добавляем элемент в результат
-//             result[resultSize++] = arr[i];      // добавляем уникальный элемент
-//             result[resultSize++] = arr[i];      // дублируем его
-//         }
-//     }
-
-//     // Вывод полученной последовательности
-//     std::cout << "Результирующая последовательность:\n";
-//     for (int i = 0; i < resultSize; ++i) {
-//         std::cout << result[i] << " ";
-//     }
-//     std::cout << std::endl;
-
-//     return 0;
-// }
-
-// //№5
-// bool simp(int x)
-// {
-//     for(int i=2;i<(sqrt(x)+1);i++){
-//         if (x % i == 0) {
-//             return true;
-//         }
-//     }
-//     if (x <= 0)
-//     return true;
-//     return false;
-// }
-// #include <cmath>
-// int main()
-// {
-//     int n,i=0,a;
-//     cin>>n;
-//     int *ar=new int[2*n];
-//     for(int k=0;k<n;k++)
-//     {
-//         cin>>a;
-//         if(simp(a))
-//         {
-//             if(cbrt(a)==int(cbrt(a)))
-//             {
-//                 ar[i+1]=a;
-//                 ar[i]=a;
-//                 i+=2;
-//             }
-//             else
-//             {
-//                 ar[i]=a;
-//                 i+=1;
-//             }
-//         }
-
-//     }
-//     for(int j=0;j<i;j++)
-//     cout<<ar[j]<<" ";
-//     delete [] ar;
-// }
+#include <cmath>
+int main()
+{
+    int n;
+    cin>>n;
+    int *ar=new int[2*n + TAIL];
+    for(int k=0;k<n;k++)
+    {
+        cin>>ar[k];
+    }
+    for(int i=0;i<n;i++){
+        if (!simp(ar[i]))
+        {
+            for(int k=i;k<n-1;k++)
+            {
+                ar[k]=ar[k+1];
+            }
+            n--;
+            i--;
+        }
+        else
+        {
+            if (cbrt(ar[i])==int(cbrt(ar[i])))
+            {
+                n++;
+                for(int k=n;k>i;k--)
+                {
+                    ar[k]=ar[k-1];
+                }
+                i++;
+            }
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<ar[i]<<" ";
+        // bool fl=1;
+        // for(int k=0;k<i;k++)
+        // {
+        //     if (ar[i]=ar[k])
+        //     {
+        //         fl=0;
+        //         break;
+        //     }
+        // }
+        // if (fl)
+        // cout<<ar[i]<<" ";
+    }
+    
+    delete [] ar;
+}
