@@ -6,12 +6,22 @@ using namespace std;
 int main()
 {
     short Q1,P1,Q2,P2,A;
-    int cost;
+    int cost=INT_MAX;
     cin>>Q1>>P1>>Q2>>P2>>A;
-    if ( ((Q1*1.0f)/P1)>=((Q2*1.0f)/P2))
-        cost=min(ceil((A*1.0f)/Q1)*P1,float((ceil((A*1.0f)/Q1)-1)*P1+ceil(((A-(A/Q1)*Q1)*1.0f)/Q2)*P2  ));
-    else
-        cost=min(ceil((A*1.0f)/Q2)*P2,float((ceil((A*1.0f)/Q2)-1)*P2+ceil(((A-(A/Q2)*Q2)*1.0f)/Q1)*P1  ));
+    
+    
+    for(int i=0;i<=A/Q1+1;i++ )
+    {
+        for(int j=0;j<=A/Q2+1;j++)
+        {
+            if((Q1*i+Q2*j)>=A)
+            {
+                cost=min(cost,P1*i+P2*j);
+                break;
+            }
+        }
+
+    }
     cout<<cost;
 
 }
