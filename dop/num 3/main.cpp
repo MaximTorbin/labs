@@ -31,7 +31,7 @@ int main()
 {
     int n;
     cin>>n;
-    int *ar=new int[2*n + 50];
+    int *ar=new int[2*n + 5];
     for(int k=0;k<n;k++)
     {
         cin>>ar[k];
