@@ -98,30 +98,45 @@ public:
 
     void sortByLastDigit()
     {
-        std::vector<int> values;
-        Node* temp = head;
-        while (temp)
-        {
-            values.push_back(temp->data);
-            temp = temp->next;
-        }
+    //     std::vector<int> values;
+    //     Node* temp = head;
+    //     while (temp)
+    //     {
+    //         values.push_back(temp->data);
+    //         temp = temp->next;
+    //     }
 
-        for(int i=0;i<values.size();i++)
-        {
-            for(int j=i+1;j<values.size();j++)
-            {
-                if (values[i]%10<values[j]%10)
-                    std::swap(values[i],values[j]);
-            }
+    //     for(int i=0;i<values.size();i++)
+    //     {
+    //         for(int j=i+1;j<values.size();j++)
+    //         {
+    //             if (values[i]%10<values[j]%10)
+    //                 std::swap(values[i],values[j]);
+    //         }
   
-            temp = head;
-            for (int val : values)
+    //         temp = head;
+    //         for (int val : values)
+    //         {
+    //             temp->data = val;
+    //             temp = temp->next;
+    //         }
+    //     }
+        Node* p1= head;
+        while(p1)
+        {
+            Node* p2=p1->next;
+            while(p2)
             {
-                temp->data = val;
-                temp = temp->next;
+                if ((p1->data)%10<(p2->data)%10)
+                    std::swap(p1->data,p2->data);
+                p2=p2->next;
             }
+            p1=p1->next;
+
+
         }
     }
+
 
     ~LinkedList()
     {
