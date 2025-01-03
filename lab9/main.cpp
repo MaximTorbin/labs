@@ -3,12 +3,10 @@
 using namespace std;
 int main()
 {
-    unsigned int a=305419896;
-    unsigned char *pa=reinterpret_cast<unsigned char*>(&a);
-    for(int i=0;i<sizeof(unsigned int);i++)
+    unsigned int number=305419896;
+    unsigned char *pa=reinterpret_cast<unsigned char*>(&number);
+    for(int i=sizeof(unsigned int)-1;i>=0;i--)
     {
-        cout<<bitset<8>(pa[i])<<endl;
-        //bitset<8> byteBits(pa[i]);
-        //cout<<"Байт "<<i<<": "<<byteBits<<endl;
+        cout<<bitset<8>(pa[i])<<" ";
     }
 }
