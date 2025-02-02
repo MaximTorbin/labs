@@ -80,6 +80,7 @@ private:
             if(!resultStr.empty()||result[i]!=0)
                 resultStr.push_back(result[i]+'0');
         }
+        delete[] result;
         return resultStr.empty() ? "0" : resultStr;
     }
 
@@ -187,9 +188,9 @@ public:
 
         BigInt operator < (const BigInt& other) const
         {
-        if (sign<other.get_sign())
+        if (sign<other.sign)
             return false;
-        if (sign>other.get_sign())
+        if (sign>other.sign)
             return true;
         if (sign)
             return IsGreater(digits,other.digits);
@@ -216,6 +217,15 @@ public:
         {
         return !(digits>other.digits);
         }
+    BigInt operator == (const BigInt& other) const
+        {
+            return (sign==other.sign)&(digits==other.digits);
+        }
+    BigInt operator != (const BigInt& other) const
+        {
+            return (sign!=other.sign)||(digits!=other.digits);
+        }
+
 };
 
 std::ostream& operator<<(std::ostream& os, const BigInt& num)
@@ -239,7 +249,7 @@ int main()
     BigInt b;
     std::cin>>a;
     std::cin>>b;
-    std::cout<<a*b<<std::endl;
+    std::cout<<(a!=b)<<std::endl;
 
 }
 
