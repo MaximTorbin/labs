@@ -106,6 +106,11 @@ public:
             sign=false;
         }
         digits.erase(0, digits.find_first_not_of('0'));
+        for(char ch:digits)
+        {
+            if(!isdigit(ch))
+                throw std::runtime_error("invalid string");
+        }
         if(digits.empty())
         {
             digits="0";
@@ -123,9 +128,9 @@ public:
         return sign;
     }
 
-    void set_sign(bool sign)
+    void set_sign(bool newsign)
     {
-        sign=sign;
+        sign=newsign;
     }
 
     BigInt operator + (const BigInt other) const
@@ -179,15 +184,15 @@ public:
         return BigInt(new_sign ? "-"+result : result);
     }
 
-        BigInt operator *= (const BigInt other)
-        {
+    BigInt operator *= (const BigInt other)
+    {
         *this=*this*other;
         return *this;
-        }
+    }
 
 
-        BigInt operator < (const BigInt& other) const
-        {
+    BigInt operator < (const BigInt& other) const
+    {
         if (sign<other.sign)
             return false;
         if (sign>other.sign)
@@ -195,10 +200,10 @@ public:
         if (sign)
             return IsGreater(digits,other.digits);
         return IsGreater(other.digits,digits);
-        }
+    }
 
-        BigInt operator > (const BigInt& other) const
-        {
+    BigInt operator > (const BigInt& other) const
+    {
         if (sign<other.sign)
             return true;
         if (sign>other.sign)
@@ -206,25 +211,27 @@ public:
         if (sign)
             return IsGreater(other.digits,digits);
         return IsGreater(digits,other.digits);
-        }
+    }
 
     BigInt operator >= (const BigInt& other) const
-        {
+    {
         return !(digits<other.digits);
-        }
+    }
         
     BigInt operator <= (const BigInt& other) const
-        {
+    {
         return !(digits>other.digits);
-        }
+    }
+
     BigInt operator == (const BigInt& other) const
-        {
-            return (sign==other.sign)&(digits==other.digits);
-        }
+    {
+        return (sign==other.sign)&(digits==other.digits);
+    }
+
     BigInt operator != (const BigInt& other) const
-        {
-            return (sign!=other.sign)||(digits!=other.digits);
-        }
+    {
+        return (sign!=other.sign)||(digits!=other.digits);
+    }
 
 };
 
@@ -232,7 +239,7 @@ std::ostream& operator<<(std::ostream& os, const BigInt& num)
 {
     if(num.get_sign())
         os<<"-";
-    os << num.get_value();
+    os<<num.get_value();
     return os;
 }
 
@@ -245,11 +252,16 @@ std::istream& operator>>(std::istream& is, BigInt& num)
 }
 int main()
 {
-    BigInt a;
-    BigInt b;
-    std::cin>>a;
-    std::cin>>b;
-    std::cout<<(a!=b)<<std::endl;
+    try
+    {
+        BigInt a="-0";
+        BigInt b;
+        std::cout<<a.get_sign()<<std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout<< e.what();
+    }
 
 }
 

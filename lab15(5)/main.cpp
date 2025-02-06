@@ -6,6 +6,7 @@ private:
     int* data;
     size_t size_;
     size_t capacity_;
+
     void reallocate(size_t new_capacity)
     {
         int* new_data = new int[new_capacity];
