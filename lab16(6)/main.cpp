@@ -29,7 +29,7 @@ public:
         m_m=other[0].size();
         m_mat=new T*[m_n];
         if (m_n==0||m_m==0)
-            throw std::runtime_error("Invalid initializer list");
+            throw std::runtime_error("Invalid vector");
         for(int i=0;i<other.size();i++)
             {
                 if(m_m!=other[i].size())
@@ -187,7 +187,18 @@ public:
 };
 
 template<typename T>
-std::ostream& operator << (std::ostream& os,  Matrix<T>& Matr)
+std::istream& operator >> (std::istream& is,  Matrix<T>& Matr)
+{
+    for(int i=0;i<Matr.getN();i++)
+    {
+        for(int j=0;j<Matr.getM();j++)
+            is>>Matr(i,j);
+    }
+    return is;
+}
+
+template<typename T>
+std::ostream& operator << (std::ostream& os, Matrix<T>& Matr)
 {
     for(int i=0;i<Matr.getN();i++)
     {
@@ -210,6 +221,9 @@ int main()
         Matrix B(vec);
         Matrix<int> C=A*B;
         std::cout<<C;
+        Matrix<int>Mymatr(5,5);
+        std::cin>>Mymatr;
+        std::cout<<Mymatr.det();  
     }
     catch(const std::exception& e)
     {
