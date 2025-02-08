@@ -87,19 +87,20 @@ public:
         return *this;
     }
 
-    Matrix& operator + (const Matrix& other)
+    Matrix operator + (const Matrix& other)
     {
         if(other.m_m!=m_m||other.m_n!=m_n)
             throw std::runtime_error("the dimensions of the matrices are different");
+        Matrix resultMatrix=other;
         for(int i=0;i<m_n;i++)
         {
             for(int j=0;j<m_n;j++)
-                m_mat[i][j]+=other.m_mat[i][j];
+                resultMatrix.m_mat[i][j]+=m_mat[i][j];
         }
-        return *this;
+        return resultMatrix;
     }
 
-    Matrix operator +=(const Matrix& other)
+    Matrix& operator +=(const Matrix& other)
     {
         *this=*this+other;
         return *this;
@@ -123,7 +124,7 @@ public:
         return result;
     }
 
-     Matrix operator *= (const Matrix& other)
+    Matrix& operator *= (const Matrix& other)
     {
         *this=*this*other;
         return *this;
@@ -214,16 +215,16 @@ int main()
     try
     {
         Matrix<int> A({  {1,2},
-                         {3,4},
-                         {5,0}  });
-        std::vector<std::vector<int>> vec={  {6,5,0},
-                                             {9,2,3} };
+                         {3,4}});
+        std::vector<std::vector<int>> vec={  {6,5},
+                                             {9,2} };
         Matrix B(vec);
         Matrix<int> C=A*B;
         std::cout<<C;
-        Matrix<int>Mymatr(5,5);
+        Matrix<int>Mymatr(2,2);
         std::cin>>Mymatr;
-        std::cout<<Mymatr.det();  
+        std::cout<<Mymatr.det()<<std::endl;
+        std::cout<<Mymatr;
     }
     catch(const std::exception& e)
     {
