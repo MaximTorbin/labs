@@ -153,20 +153,14 @@ public:
         return *this;
     }
 
-    BigInt operator - (const BigInt other) const
+     BigInt operator - (const BigInt other) const
     {
-        if(sign!=other.sign)
-        {
-            std::string result=add(digits,other.digits);
-            return BigInt(sign ? "-"+result: result);
-        }
-        if (IsGreater(digits,other.digits))
-        {
-            return BigInt(sign ? "-"+subtract(digits,other.digits): subtract(digits,other.digits));
-        }
-        return BigInt(!other.sign ? "-"+subtract(other.digits,digits): subtract(other.digits,digits));
+        BigInt temp=other;
+        temp.sign=other.sign ? false: true;
+        return BigInt(*this+temp);
 
     }
+
     BigInt operator -= (const BigInt& other)
     {
         *this=*this-other;
@@ -254,9 +248,9 @@ int main()
 {
     try
     {
-        BigInt a="-0";
-        BigInt b;
-        std::cout<<a.get_sign()<<std::endl;
+        BigInt a="-123";
+        BigInt b=10;
+        std::cout<<a*b<<std::endl;
     }
     catch(const std::exception& e)
     {
